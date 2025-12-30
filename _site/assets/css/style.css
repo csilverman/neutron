@@ -258,3 +258,17 @@ a:hover { text-decoration: underline; }
   color: var(--muted);
   font-size: 0.95rem;
 }
+
+/* Post Pagination */
+.post-pagination ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.post-pagination .disabled {
+  color: var(--muted);
+}
