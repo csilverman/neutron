@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+---
+<article class="post">
+  <header class="post-header">
+    <h1>{{ title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      {% if tags %} · <span class="tags">{{ tags | join(", ") }}</span>{% endif %}
+    </p>
+  </header>
+
+  {% if image and not gallery %}
+    <figure class="post-figure">
+      {% image image, image_alt or title, "(min-width: 900px) 900px, 100vw" %}
+      {% if caption %}<figcaption>{{ caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  {% if gallery %}
+    <section class="gallery">
+      {% for item in gallery %}
+        {% if item.src %}
+          {% set gsrc = item.src %}
+          {% set galt = item.alt or title %}
+        {% else %}
+          {% set gsrc = item %}
+          {% set galt = title %}
+        {% endif %}
+        {% galleryImage gsrc, galt, loop.index0, "(min-width: 900px) 420px, 100vw" %}
+      {% endfor %}
+    </section>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+      <button class="lb-close" type="button" data-lb-close aria-label="Close">×</button>
+
+      <div class="lb-stage">
+        <button class="lb-nav lb-prev" type="button" data-lb-prev aria-label="Previous">‹</button>
+        <img class="lb-image" alt="" />
+        <button class="lb-nav lb-next" type="button" data-lb-next aria-label="Next">›</button>
+      </div>
+
+      <p class="lb-caption" data-lb-caption></p>
+    </dialog>
+
+    <script src="/assets/js/lightbox.js"></script>
+  {% endif %}
+
+  <div class="post-body">
+    {{ content | safe }}
+  </div>
+</article>

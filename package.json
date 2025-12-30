@@ -1,0 +1,24 @@
+{
+  "name": "imageblog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf _site .cache",
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^5.0.0",
+    "luxon": "^3.7.2"
+  },
+  "devDependencies": {
+    "rimraf": "^6.1.2"
+  },
+  "description": "",
+  "main": ".eleventy.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

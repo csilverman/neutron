@@ -1,0 +1,68 @@
+---
+eleventyAllowMissingExtension: true
+pagination:
+  data: collections.tagPages
+  size: 1
+  alias: tagPage
+layout: layouts/base.njk
+permalink: >
+  {% if tagPage.pageNumber == 0 %}
+    /tags/{{ tagPage.tag | url }}/
+  {% else %}
+    /tags/{{ tagPage.tag | url }}/page/{{ tagPage.pageNumber + 1 }}/
+  {% endif %}
+eleventyComputed:
+  title: "Tag: {{ tagPage.tag }}"
+---
+
+<h1>Tag: {{ tagPage.tag }}</h1>
+
+{% set allPosts = collections[tagPage.tag] | reverse %}
+{% set start = tagPage.pageNumber * tagPage.pageSize %}
+{% set posts = allPosts | slice(start, tagPage.pageSize) %}
+
+<section class="grid">
+  {% for post in posts %}
+    <article class="card">
+      <a class="card-link" href="{{ post.url }}">
+        {% if post.data.image %}
+          {% image post.data.image, post.data.image_alt or post.data.title, "(min-width: 900px) 300px, 50vw" %}
+        {% endif %}
+        <h2 class="card-title">{{ post.data.title }}</h2>
+        <p class="card-meta">{{ post.date | readableDate }}</p>
+      </a>
+    </article>
+  {% endfor %}
+</section>
+
+{# Simple prev/next for this tag #}
+{% set total = allPosts.length %}
+{% set totalPages = (total / tagPage.pageSize) | round(0, "ceil") %}
+
+<nav class="pagination" aria-label="Pagination">
+  <ul>
+    <li>
+      {% if tagPage.pageNumber > 0 %}
+        {% if tagPage.pageNumber - 1 == 0 %}
+          <a href="/tags/{{ tagPage.tag | url }}/">← Newer</a>
+        {% else %}
+          <a href="/tags/{{ tagPage.tag | url }}/page/{{ tagPage.pageNumber }}/">← Newer</a>
+        {% endif %}
+      {% else %}
+        <span class="disabled">← Newer</span>
+      {% endif %}
+    </li>
+
+    <li class="page-count">
+      Page {{ tagPage.pageNumber + 1 }} of {{ totalPages }}
+    </li>
+
+    <li>
+      {% if tagPage.pageNumber + 1 < totalPages %}
+        <a href="/tags/{{ tagPage.tag | url }}/page/{{ tagPage.pageNumber + 2 }}/">Older →</a>
+      {% else %}
+        <span class="disabled">Older →</span>
+      {% endif %}
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  Tag: test · My Imageblog
+</title>
+<meta name="description" content="A tiny 11ty-powered imageblog." />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="My Imageblog RSS" />
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">My Imageblog</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/tags/">Tags</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+
+    <main class="wrap">
+      
+<h1>Tag: test</h1>
+
+
+
+
+
+<section class="grid">
+  
+</section>
+
+
+
+
+
+<nav class="pagination" aria-label="Pagination">
+  <ul>
+    <li>
+      
+        <span class="disabled">← Newer</span>
+      
+    </li>
+
+    <li class="page-count">
+      Page 1 of 1
+    </li>
+
+    <li>
+      
+        <span class="disabled">Older →</span>
+      
+    </li>
+  </ul>
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <div class="wrap">
+    <p>
+hahagrizzly
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

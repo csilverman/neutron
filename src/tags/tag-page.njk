@@ -1,0 +1,36 @@
+---
+eleventyAllowMissingExtension: true
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+layout: layouts/base.njk
+permalink: "/tags/{{ tag | url }}/"
+eleventyComputed:
+  title: "Tag: {{ tag }}"
+---
+
+{# Now that we have `tag`, we can paginate posts for this tag using a second pagination include. #}
+
+{% set tagged = collections[tag] | reverse %}
+
+<h1>Tag: {{ tag }}</h1>
+
+{# Manual paging using query param not supported; instead we create paged tag templates below. #}
+<p>{{ tagged.length }} post{% if tagged.length != 1 %}s{% endif %}.</p>
+
+<section class="grid">
+  {% for post in tagged | slice(0, 12) %}
+    <article class="card">
+      <a class="card-link" href="{{ post.url }}">
+        {% if post.data.image %}
+          {% image post.data.image, post.data.image_alt or post.data.title, "(min-width: 900px) 300px, 50vw" %}
+        {% endif %}
+        <h2 class="card-title">{{ post.data.title }}</h2>
+        <p class="card-meta">{{ post.date | readableDate }}</p>
+      </a>
+    </article>
+  {% endfor %}
+</section>
+
+{# If you have more than 12 posts in a tag, use tag-page-paged.njk below to get /page/2/ etc. #}

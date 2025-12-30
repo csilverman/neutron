@@ -1,0 +1,23 @@
+<nav class="pagination" aria-label="Pagination">
+  <ul>
+    <li>
+      {% if pagination.href.previous %}
+        <a href="{{ pagination.href.previous }}">← Newer</a>
+      {% else %}
+        <span class="disabled">← Newer</span>
+      {% endif %}
+    </li>
+
+    <li class="page-count">
+      Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
+    </li>
+
+    <li>
+      {% if pagination.href.next %}
+        <a href="{{ pagination.href.next }}">Older →</a>
+      {% else %}
+        <span class="disabled">Older →</span>
+      {% endif %}
+    </li>
+  </ul>
+</nav>

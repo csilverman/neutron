@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+title: Home
+permalink: "/index.html"
+pagination:
+  data: collections.posts
+  size: 12
+  alias: posts
+  pageNumber: 0
+---
+
+<h1 class="page-title">{{ site.title }}</h1>
+<p class="lede">{{ site.description }}</p>
+
+<section class="grid">
+  {% for post in posts %}
+    <article class="card">
+      <a class="card-link" href="{{ post.url }}">
+        {% if post.data.image %}
+          {% image post.data.image, post.data.image_alt or post.data.title, "(min-width: 900px) 300px, 50vw" %}
+        {% endif %}
+        <h2 class="card-title">{{ post.data.title }}</h2>
+        <p class="card-meta">{{ post.date | readableDate }}</p>
+      </a>
+    </article>
+  {% endfor %}
+</section>
+
+{% include "partials/pagination.njk" %}
