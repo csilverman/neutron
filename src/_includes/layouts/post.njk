@@ -49,4 +49,24 @@ layout: layouts/base.njk
   <div class="post-body">
     {{ content | safe }}
   </div>
+
+  <nav class="post-pagination" aria-label="Post navigation">
+    <ul>
+      <li>
+        {% if newerPost %}
+          <a href="{{ newerPost.url }}">← Newer</a>
+        {% else %}
+          <span class="disabled">← Newer</span>
+        {% endif %}
+      </li>
+
+      <li>
+        {% if olderPost %}
+          <a href="{{ olderPost.url }}">Older →</a>
+        {% else %}
+          <span class="disabled">Older →</span>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
 </article>
