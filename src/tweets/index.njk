@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title: Home
+permalink: "/tweets/index.html"
+pagination:
+  data: collections.tweets
+  size: 12
+  alias: tweets
+  pageNumber: 0
+---
+
+<h1 class="page-title">TWEETS</h1>
+
+<section class="grid">
+  {% for tweet in tweets %}
+    <article class="card">
+      <a class="card-link" href="{{ tweet.url }}">
+        {% if tweet.data.image %}
+          {% image tweet.data.image, tweet.data.image_alt or tweet.data.title, "(min-width: 900px) 300px, 50vw" %}
+        {% endif %}
+        <h2 class="card-title">{{ tweet.data.title }}</h2>
+        <p class="card-meta">{{ tweet.date | readableDate }}</p>
+      </a>
+    </article>
+  {% endfor %}
+</section>
+
+{% include "partials/pagination.njk" %}

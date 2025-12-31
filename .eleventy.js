@@ -99,6 +99,14 @@ export default function (eleventyConfig) {
       .sort((a, b) => b.date - a.date);
   });
 
+  // Collections
+  eleventyConfig.addCollection("tweets", (collectionApi) => {
+    return collectionApi
+      .getFilteredByGlob("src/tweets/*.md")
+      .filter((p) => !p.data.draft)
+      .sort((a, b) => b.date - a.date);
+  });
+
   eleventyConfig.addCollection("tagList", (collectionApi) => {
     const ignore = new Set(["all", "nav", "post", "posts", "tagList"]);
     const tags = new Set();
