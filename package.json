@@ -3,19 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": {
+
+"scripts": {
     "clean": "rimraf _site .cache",
-    "start": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+  
+    "build": "npm run build:eleventy && npm run build:sass",
+    "build:eleventy": "npx @11ty/eleventy",
+    "build:sass": "npx sass src/assets/scss/style.scss _site/assets/css/style.css --no-source-map",
+  
+    "start": "npm run dev",
+    "dev": "npx @11ty/eleventy --serve & npx sass --watch src/assets/scss/style.scss:_site/assets/css/style.css --no-source-map"
   },
+
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-img": "^5.0.0",
     "luxon": "^3.7.2",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "sass": "^1.80.0",
+    "npm-run-all": "^4.1.5"
+
   },
   "devDependencies": {
-    "rimraf": "^6.1.2"
+    "rimraf": "^6.1.2",
+    "sass": "^1.97.1"
   },
   "description": "",
   "main": ".eleventy.js",

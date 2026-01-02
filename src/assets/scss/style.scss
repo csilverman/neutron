@@ -1,0 +1,13 @@
+$primary: #fa0;
+$lol: #f00;
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: $lol;
+
+  a {
+  	color: $primary;
+    font-family: Helvetica;
+  }
+}
