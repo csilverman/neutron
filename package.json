@@ -12,9 +12,11 @@
     "build:sass": "npx sass src/assets/scss/style.scss _site/assets/css/style.css --no-source-map",
   
     "start": "npm run dev",
-    "dev": "npx @11ty/eleventy --serve & npx sass --watch src/assets/scss/style.scss:_site/assets/css/style.css --no-source-map"
+  
+    "dev": "run-p dev:*",
+    "dev:eleventy": "npx @11ty/eleventy --serve",
+    "dev:sass": "npx sass --watch --poll src/assets/scss/style.scss:_site/assets/css/style.css --no-source-map"
   },
-
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-img": "^5.0.0",
