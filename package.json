@@ -4,18 +4,18 @@
   "private": true,
   "type": "module",
 
-"scripts": {
+  "scripts": {
     "clean": "rimraf _site .cache",
   
     "build": "npm run build:eleventy && npm run build:sass",
     "build:eleventy": "npx @11ty/eleventy",
-    "build:sass": "npx sass src/assets/scss/style.scss _site/assets/css/style.css --no-source-map",
+    "build:sass": "npx sass --load-path=node_modules src/assets/scss/style.scss _site/assets/css/style.css --no-source-map",
   
     "start": "npm run dev",
   
     "dev": "run-p dev:*",
     "dev:eleventy": "npx @11ty/eleventy --serve",
-    "dev:sass": "npx sass --watch --poll src/assets/scss/style.scss:_site/assets/css/style.css --no-source-map"
+    "dev:sass": "npx sass --load-path=node_modules --watch --poll src/assets/scss/style.scss:_site/assets/css/style.css --no-source-map"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
@@ -24,7 +24,7 @@
     "sharp": "^0.34.5",
     "sass": "^1.80.0",
     "npm-run-all": "^4.1.5",
-    "my-css-framework": "git+ssh://git@github.com/csilverman/amontillado.git#main"
+    "amontillado": "git+ssh://git@github.com/csilverman/amontillado.git#main"
   },
   "devDependencies": {
     "rimraf": "^6.1.2",
