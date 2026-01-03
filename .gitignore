@@ -1,3 +1,6 @@
 node_modules/
 _site/
 .cache/
+src/assets/scss/amontillado/~amontillado.scss
+src/assets/scss/amontillado/package.json
+src/assets/scss/amontillado/.gitattributes

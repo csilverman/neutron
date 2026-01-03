@@ -1,9 +1,43 @@
+:root {
+  --serif: "Georgia, serif";
+  --sansSerif: system-ui;
+}
+
+.foo {
+  font-family: var(--sansSerif);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.bar {
+  font-family: var(--sansSerif);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+h4 {
+  font-family: var(--sansSerif);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+h4 {
+  font-family: var(--sansSerif);
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
 body {
   font-family: system-ui, sans-serif;
-  background: #0f172a;
-  color: #08f;
+  background: #fff;
+  color: #333;
 }
 body a {
-  color: #fa0;
   font-family: Georgia;
+}
+
+p {
+  font-family: var(--sansSerif);
+  font-size: 1.2rem;
+  line-height: 1.4;
 }
