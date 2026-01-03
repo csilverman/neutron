@@ -1,7 +1,28 @@
+{% import "partials/macros.njk" as ui %}
+
 <!doctype html>
-<html lang="en">
+{# Allow frontmatter `classes` to be either a string or an array #}
+{% set htmlClasses = "" %}
+{% if classes %}
+  {% if classes is string %}
+    {% set htmlClasses = classes %}
+  {% else %}
+    {# assume array-like #}
+    {% set htmlClasses = classes | join(" ") %}
+  {% endif %}
+{% endif %}
+
+<!doctype html>
+<html lang="en" class="{% if htmlClasses %} {{ htmlClasses | escape }}{% endif %}">
   <head>
-    {% include "partials/head.njk" %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if title %}{{ title }} · {% endif %}{{ site.title }}
+    </title>
+    <meta name="description" content="{{ description or site.description }}" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="{{ site.title }} RSS" />
   </head>
   <body>
     {% include "partials/header.njk" %}

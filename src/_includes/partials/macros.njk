@@ -1,0 +1,11 @@
+{# Simple component-style macro #}
+{% macro card(title, bodyHtml, href="") %}
+  <article class="card">
+    {% if href %}<a class="card__link" href="{{ href }}">{% endif %}
+      <h2 class="card__title">{{ title }}</h2>
+      <div class="card__body">
+        {{ bodyHtml | safe }}
+      </div>
+    {% if href %}</a>{% endif %}
+  </article>
+{% endmacro %}
