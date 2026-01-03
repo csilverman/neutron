@@ -1,0 +1,52 @@
+:root {
+  --serif: "Georgia, serif";
+  --sansSerif: system-ui;
+}
+
+/// --- FONT MAPS -------------------------------------------------------------
+
+$serif: (
+  family: "Georgia, serif",
+
+  size: (
+    small: 1.1rem,
+    regular: 1.3rem,
+  )
+);
+
+$sansSerif: (
+  family: var(--sansSerif),
+
+  size: (
+    small: 1rem,
+    regular: 1.2rem,
+
+    smallh2: 1.1rem,
+    smallh3: 1rem,
+
+    h2: clamp(2rem, 4vw, 4rem),
+    h4: 1.6rem
+  ),
+
+  lh: (
+    normal: 1.4,
+    normal-h4: 1.1,
+    compact: 1.2,
+    compact-small: 1,
+    compact-smallh3: 0.9,
+
+    compact-h4: 1
+  ),
+
+  weight: (
+    bold: font-variation-settings "wght" 600,
+  )
+);
+
+// Master font registry
+$fonts: (
+  sansSerif: $sansSerif,
+  serif: $serif
+);
+
+@import "amontillado/~amontillado.scss";

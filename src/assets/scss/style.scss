@@ -1,13 +1,28 @@
-$primary: #fa0;
-$lol: #08f;
+@import "type.scss";
 
 body {
   font-family: system-ui, sans-serif;
-  background: #0f172a;
-  color: $lol;
+  background: #fff;
+  color: #333;
 
   a {
-  	color: $primary;
     font-family: Georgia;
   }
 }
+
+p {
+  @include font((
+    font: sansSerif,
+    size: regular
+  ));  
+}
+
+
+
+
+
+
+
+
+
+
