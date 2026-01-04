@@ -5,6 +5,12 @@ classes: "page"
 permalink: "/about/index.html"
 ---
 
+{% from "partials/macros.njk" import card %}
+
 about
 
-{{ ui.card("Example card", "<p>This is passed in as HTML.</p>", "/tags/") }}
+{{ card(
+  "Example card",
+  "<p>This is passed in as HTML.</p>",
+  "/tags/")
+}}
